@@ -13,14 +13,15 @@ class BottomNavigationTab extends StatelessWidget {
           icon: Icon(Icons.home), 
           label: 'Home',),
       BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Search',),
+          icon: Icon(Icons.settings),
+          label: 'Configuration',),
       BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profile',),
     ],
     currentIndex: selectedIndex,
-    selectedItemColor: ColorsApp.primaryColor,
+    selectedItemColor: ColorsApp.succesColor,
+    unselectedItemColor: ColorsApp.primaryColor,
     onTap: onItemTapped,
     );
   }
