@@ -7,10 +7,7 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('About'),
-        ),
-        body: FirstForm());
+    return const Scaffold(
+      body: FirstForm());
   }
 }
