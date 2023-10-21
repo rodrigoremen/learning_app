@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/kernel/themes/colors_app.dart';
+import 'package:learning_app/modules/home/adapters/screens/widgets/first_form.dart';
 
 class About extends StatelessWidget {
   const About({super.key});
@@ -10,30 +11,6 @@ class About extends StatelessWidget {
         appBar: AppBar(
           title: const Text('About'),
         ),
-        body: Row(
-          children: [
-            Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  margin: const EdgeInsets.only(top: 16),
-                  color: ColorsApp.primaryColor,
-                  child: const Text('Rodrigo'),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Container(
-                  
-                  padding: const EdgeInsets.all(16),
-                  margin: const EdgeInsets.only(top: 16),
-                  color: ColorsApp.primaryColor,
-                  child: const Text('Rodrigo'),
-                ),
-              ],
-            ),
-          ],
-        ));
+        body: FirstForm());
   }
 }
