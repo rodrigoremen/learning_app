@@ -11,11 +11,12 @@ class News extends StatelessWidget {
         backgroundColor: ColorsApp.primaryColor,
         title: const Text('Noticias'),
       ),
-      body: const Center(
-          child: CustomCarousel(
-        carouselHeight: 300,
-        itemsList: [FirstSection(), SecondSection(), ThirdSection()],
-      )),
+      body: Container(
+          margin: const EdgeInsets.all(10),
+          child: const CustomCarousel(
+            carouselHeight: 250,
+            itemsList: [FirstSection(), SecondSection(), ThirdSection()],
+          )),
     );
   }
 }
@@ -35,7 +36,7 @@ class FirstSection extends StatelessWidget {
           Image.asset(
             'assets/images/Logo-utez.png',
             width: width,
-            height: 200,
+            height: 120,
             fit: BoxFit.cover,
           ),
           Container(
@@ -74,9 +75,9 @@ class SecondSection extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.asset(
-            'assets/images/Logo-utez.png',
+            'assets/images/utez.jpg',
             width: width,
-            height: 200,
+            height: 120,
             fit: BoxFit.cover,
           ),
           Container(
@@ -115,9 +116,9 @@ class ThirdSection extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.asset(
-            'assets/images/Logo-utez.png',
+            'assets/images/ola.jpg',
             width: width,
-            height: 200,
+            height: 120,
             fit: BoxFit.cover,
           ),
           Container(
