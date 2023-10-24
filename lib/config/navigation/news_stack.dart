@@ -8,7 +8,7 @@ class NewsStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/news',
       routes: {
         '/news': (context) => const News(),
       },
