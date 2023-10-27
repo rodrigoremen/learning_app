@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learning_app/kernel/themes/colors_app.dart';
 import 'package:learning_app/modules/home/adapters/screens/widgets/first_form.dart';
 
 class About extends StatelessWidget {

@@ -82,13 +82,13 @@ class _FirstFormState extends State<FirstForm> {
                     margin: const EdgeInsets.all(16),
                     child: TextFormField(
                       decoration: const InputDecoration(
-                        icon: Icon(Icons.person_add_alt_1),
-                        hintText: '¿Cuál es tu edad?',
-                        labelText: 'Edad:*',
+                        icon: Icon(Icons.lock),
+                        hintText: '¿Cuál es contraseña?',
+                        labelText: 'Contraseña:*',
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Por favor ingresa tu edad';
+                          return 'Por favor ingresa su contraseña';
                         }
                         return null;
                       },
