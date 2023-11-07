@@ -11,12 +11,25 @@ class News extends StatelessWidget {
         backgroundColor: ColorsApp.primaryColor,
         title: const Text('Noticias'),
       ),
-      body: Container(
-          margin: const EdgeInsets.all(10),
-          child: const CustomCarousel(
-            carouselHeight: 250,
-            itemsList: [FirstSection(), SecondSection(), ThirdSection()],
-          )),
+      body: Column(
+        children: [
+          Container(
+              margin: const EdgeInsets.all(10),
+              child: const CustomCarousel(
+                carouselHeight: 250,
+                itemsList: [FirstSection(), SecondSection(), ThirdSection()],
+              )),
+          Container(
+            margin: const EdgeInsets.all(10),
+            child: const Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'Bienvenido ',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )),
+          ),
+        ],
+      ),
     );
   }
 }

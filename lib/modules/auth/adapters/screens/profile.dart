@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:learning_app/kernel/themes/colors_app.dart';
+import 'package:dio/dio.dart';
+import 'package:learning_app/kernel/validations/validations_app.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  final TextEditingController _email = TextEditingController(text: '');
+  final TextEditingController _password = TextEditingController(text: '');
+  final dio = Dio();
 
   @override
   Widget build(BuildContext context) {
@@ -100,23 +111,42 @@ class Profile extends StatelessWidget {
                                     border: Border(
                                         bottom: BorderSide(
                                             color: ColorsApp.primaryColor))),
-                                child: TextField(
+                                child: TextFormField(
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: "Email or Phone number",
+                                      hintText: "Correo electrónico",
                                       hintStyle:
                                           TextStyle(color: Colors.grey[700])),
+                                  validator: (value) {
+                                    RegExp regex = RegExp(ValiationsApp.email);
+                                    if (value == null || value.isEmpty) {
+                                      return 'campo obligatorio';
+                                    } else if (!regex.hasMatch(value)) {
+                                      return 'Introduce un correo válido';
+                                    }
+                                    return null;
+                                  },
+                                  keyboardType: TextInputType.emailAddress,
+                                  controller: _email,
                                 ),
                               ),
                               Container(
                                 padding: const EdgeInsets.all(8.0),
-                                child: TextField(
+                                child: TextFormField(
                                   obscureText: true,
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: "Password",
+                                      hintText: "Contraseña",
                                       hintStyle:
                                           TextStyle(color: Colors.grey[700])),
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Por favor ingresa su contraseña';
+                                    }
+                                    return null;
+                                  },
+                                  keyboardType: TextInputType.number,
+                                  controller: _password,
                                 ),
                               )
                             ],
@@ -125,27 +155,61 @@ class Profile extends StatelessWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    FadeInUp(
-                        duration: const Duration(milliseconds: 1900),
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: ColorsApp.primaryColor),
-                          child: const Center(
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )),
-                    const SizedBox(
-                      height: 70,
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(200, 50),
+                            backgroundColor: ColorsApp.succesColor),
+                        child: const Text('Crear cuenta'),
+                        onPressed: () async {
+                          Response response;
+                          response = await dio.get(
+                            'http://192.168.56.1:3000/apiEcomerce/1.0/users',
+                            queryParameters: {
+                              'email': _email,
+                              'password': _password
+                            },
+                          );
+                          print(response.data.toString());
+                        },
+                      ),
                     ),
-                    FadeInUp(
-                        duration: const Duration(milliseconds: 2000),
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      child: ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(200, 50),
+                          backgroundColor: ColorsApp.succesColor,
+                        ),
+                        icon: Icon(Icons
+                            .g_mobiledata), // Aquí puedes cambiar el icono por el de Google
+                        label: const Text('Crear cuenta con Google'),
+                        onPressed: () async {
+                          Response response;
+                          response = await dio.get(
+                            'http://192.168.56.1:3000/apiEcomerce/1.0/users',
+                            queryParameters: {
+                              'email': _email,
+                              'password': _password
+                            },
+                          );
+                          print(response.data.toString());
+                        },
+                      ),
+                    ),
+                    TextButton(
+                        onPressed: () async {
+                          Response response;
+                          response = await dio.get(
+                            'http://192.168.56.1:3000/apiEcomerce/1.0/users',
+                            queryParameters: {
+                              'email': _email,
+                              'password': _password
+                            },
+                          );
+                          print(response.data.toString());
+                        },
                         child: const Text(
                           "Crear una nueva cuenta",
                           style: TextStyle(color: ColorsApp.primaryColor),
