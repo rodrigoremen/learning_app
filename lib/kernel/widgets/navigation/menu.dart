@@ -3,7 +3,7 @@ import 'package:learning_app/config/navigation/home_stack.dart';
 import 'package:learning_app/config/navigation/news_stack.dart';
 import 'package:learning_app/kernel/widgets/navigation/bottom_navigation_tab.dart';
 import 'package:learning_app/modules/auth/adapters/screens/profile.dart';
-import 'package:learning_app/modules/settings/adapters/screens/settings.dart';
+import 'package:learning_app/modules/shop/adapters/screens/shop.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -26,7 +26,7 @@ class _MenuState extends State<Menu> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: const [HomeStack(), Settings(), NewsStack(), Profile()],
+        children: const [HomeStack(), Shop(), NewsStack(), Profile()],
       ),
       bottomNavigationBar: BottomNavigationTab(
           selectedIndex: _selectedIndex, onItemTapped: _onItemTapped),

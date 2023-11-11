@@ -17,8 +17,8 @@ class BottomNavigationTab extends StatelessWidget {
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Configuration',
+          icon: Icon(Icons.store_mall_directory_outlined),
+          label: 'Tienda',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.newspaper),
